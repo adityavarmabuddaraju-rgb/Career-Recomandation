@@ -1,193 +1,87 @@
-# 🚀 CareerAI — AI Resume Analyzer & Career Recommendation Platform
+# 🎯 CareerAI — AI Career Recommendation Platform
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/Frontend-React%2018-61DAFB.svg)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38BDF8.svg)](https://tailwindcss.com/)
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248.svg)](https://www.mongodb.com/)
-[![Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini-4285F4.svg)](https://deepmind.google/technologies/gemini/)
+<div align="center">
 
-**CareerAI** is a state-of-the-art AI-powered platform designed to analyze resumes, optimize job targeting, evaluate skill gaps, generate tailored interview preparation material, and suggest actionable career pathways using Advanced AI Models (Google Gemini & Mock AI engine).
+![CareerAI Banner](https://img.shields.io/badge/CareerAI-AI%20Powered%20Career%20Guidance-6366f1?style=for-the-badge&logo=sparkles&logoColor=white)
 
----
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb)](https://mongodb.com)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
 
-## 📸 Screenshots & Preview
+**Discover careers based on your skills. Build your personalized learning roadmap. Land your dream job.**
 
-> *Placeholder: Add application screenshots here*
+[🚀 Live Demo](#) · [📖 Documentation](#getting-started) · [🐛 Report Bug](https://github.com/adityavarmabuddaraju-rgb/Career-Recomandation/issues)
 
-| Dashboard View | Resume Analyzer | Skill Gap Analysis |
-| :---: | :---: | :---: |
-| ![Dashboard](https://via.placeholder.com/400x225?text=Dashboard+Overview) | ![Analyzer](https://via.placeholder.com/400x225?text=Resume+Analysis) | ![Skill Gap](https://via.placeholder.com/400x225?text=Skill+Gap+Chart) |
+</div>
 
 ---
 
-## ✨ Features
+## ✨ What is CareerAI?
 
-- 📄 **Smart Resume Parsing**: Extracts structured data (contact info, work history, education, skills, certifications) from PDF and DOCX files.
-- 🎯 **AI Match Scoring & Analysis**: Calculates job match percentages based on target job descriptions and highlights keyword matches.
-- 📊 **Skill Gap & Salary Insights**: Identifies missing critical skills, suggests learning roadmaps, and estimates market salary ranges.
-- ✍️ **Interactive Resume Builder**: Drag-and-drop sections, real-time live preview, multiple modern templates, and export to PDF/JSON.
-- 🛡️ **ATS Optimization Audit**: Checks formatting, keyword density, section header clarity, and readability for Applicant Tracking Systems.
-- 💬 **AI Interview Prep Generator**: Generates customized technical and behavioral interview questions with suggested STAR answers based on your resume and target role.
-- 🗺️ **Career Path Explorer**: Maps potential career growth trajectories, next-level roles, and skill upgrade paths.
-- 👤 **User Dashboard & History**: Save, compare, and re-evaluate past resume analyses over time with persistent JWT authentication.
+CareerAI answers two of the most important career questions:
+
+> **"What careers am I eligible for based on my skills?"**
+> **"What do I need to learn to get the career I want?"**
+
+It maps your current skills to real career paths across **10 domains and 155+ careers**, then builds you a personalized step-by-step learning roadmap — no resume upload needed.
 
 ---
 
-## 🛠️ Tech Stack
+## 🖥️ Screenshots
 
-- **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons, Framer Motion, Axios, React Router v6
-- **Backend**: Python 3.12, FastAPI, Pydantic, Motor (Async MongoDB Driver), PyJWT, PyPDF2/python-docx
-- **Database**: MongoDB 7.0
-- **AI Integration**: Google Gemini 1.5 Flash API (with robust Mock AI fallback option)
-- **Containerization**: Docker & Docker Compose
+| Career Explorer | Career Roadmap | My Skills |
+|---|---|---|
+| Browse 155+ careers | Step-by-step roadmap | Track your skills |
 
 ---
 
-## 🏗️ Architecture Overview
+## 🚀 Key Features
 
-```
- ┌────────────────┐       HTTP / REST       ┌────────────────┐
- │                │ ──────────────────────> │                │
- │  React Frontend│                         │ FastAPI Backend│
- │  (Vite + Tailwind)                      │ (Python 3.12)  │
- │                │ <────────────────────── │                │
- └────────────────┘                         └───────┬────────┘
-                                                    │
-                                  ┌─────────────────┴────────────────┐
-                                  ▼                                  ▼
-                        ┌──────────────────┐               ┌──────────────────┐
-                        │   MongoDB DB     │               │  Google Gemini / │
-                        │  (Motor Async)   │               │  Mock AI Service │
-                        └──────────────────┘               └──────────────────┘
-```
+### 🔍 Career Discovery — *"What am I eligible for?"*
+- Enter your current skills and background
+- AI matches you to the most relevant careers across all domains
+- See what skills you already have vs. what you're missing
+- Get a prioritized list of careers with fit indicators
 
----
+### 🗺️ Career Roadmap — *"I want this career"*
+- Pick any career from the database
+- Get a personalized 4-level week-by-week learning roadmap
+- Roadmap adapts to your experience level and available hours per day
+- Includes tools to learn, certifications to target, and interview prep
 
-## 📋 Prerequisites
+### 🗂️ Career Explorer
+- Browse **155+ careers** across **10 professional domains**
+- Filter by category, beginner-friendliness, and entry-level availability
+- Search by career name or skill
+- Full career detail pages with responsibilities, tools, and industries
 
-Ensure you have the following installed on your machine:
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-- **Python**: 3.10 or higher
-- **MongoDB**: Community Server running on `localhost:27017` or Docker container
+### 📊 Skills Manager
+- Add and manage your skills with proficiency levels
+- Track Beginner / Intermediate / Advanced levels
+- Skills inform AI recommendations automatically
 
----
+### 💾 Saved Careers
+- Bookmark careers you're interested in
+- Quickly access roadmaps for saved careers
 
-## 🚀 Getting Started
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/career-ai.git
-cd career-ai
-```
-
-### 2. Backend Setup
-```bash
-cd backend
-
-# Copy environment variables template
-cp ../.env.example .env
-
-# Create virtual environment (optional but recommended)
-python -m venv venv
-# On Windows: venv\Scripts\activate
-# On macOS/Linux: source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start backend server
-uvicorn app.main:app --reload --port 8000
-```
-Backend API will be accessible at: `http://localhost:8000` (Docs: `http://localhost:8000/docs`).
-
-### 3. Frontend Setup
-```bash
-cd ../frontend
-
-# Install dependencies
-npm install
-
-# Start Vite development server
-npm run dev
-```
-Frontend Web App will be accessible at: `http://localhost:5173`.
-
-### 4. MongoDB Database
-Ensure MongoDB is running locally on default port `27017`:
-```bash
-mongod --dbpath /your/data/path
-```
-Or start via Docker:
-```bash
-docker run -d -p 27017:27017 --name careerai-mongo mongo:7
-```
-
-### 5. AI Configuration (Gemini or Demo Mode)
-By default, `AI_PROVIDER=mock` is set in `.env` so you can test all features without API keys.
-To enable real AI analysis with Google Gemini:
-1. Get an API key from [Google AI Studio](https://aistudio.google.com/).
-2. In `.env`, set:
-   ```env
-   AI_PROVIDER=gemini
-   GEMINI_API_KEY=your_actual_gemini_api_key
-   ```
+### ⚖️ Career Comparison
+- Compare two careers side-by-side
+- See skills overlap, tools, salaries, and difficulty
 
 ---
 
-## 🐳 Docker Deployment
+## 🏗️ Tech Stack
 
-Run the entire application (Frontend + Backend + MongoDB) using Docker Compose:
-
-```bash
-# Start all containers
-docker-compose up -d --build
-
-# View container logs
-docker-compose logs -f
-
-# Stop containers
-docker-compose down
-```
-
----
-
-## 🔑 Environment Variables
-
-| Variable | Description | Default Value |
-| :--- | :--- | :--- |
-| `MONGODB_URL` | MongoDB connection URI | `mongodb://localhost:27017` |
-| `DB_NAME` | Database name | `careerai` |
-| `JWT_SECRET` | Secret key for signing JWT tokens | `your-super-secret-key-change-this` |
-| `JWT_ALGORITHM` | Encryption algorithm | `HS256` |
-| `ACCESS_TOKEN_EXPIRE_MINUTES` | Access token lifespan in minutes | `60` |
-| `REFRESH_TOKEN_EXPIRE_DAYS` | Refresh token lifespan in days | `7` |
-| `AI_PROVIDER` | AI Engine (`gemini` or `mock`) | `mock` |
-| `GEMINI_API_KEY` | Google Gemini API Key | `your-gemini-api-key` |
-| `UPLOAD_DIR` | File upload storage directory | `uploads` |
-| `MAX_FILE_SIZE` | Maximum file upload size in bytes | `10485760` (10 MB) |
-| `CORS_ORIGINS` | Permitted frontend origins (JSON array) | `["http://localhost:5173"]` |
-
----
-
-## 🔌 API Endpoints Summary
-
-### Auth Routes (`/api/auth`)
-- `POST /api/auth/register` — Create a new user account
-- `POST /api/auth/login` — Authenticate user and receive JWT tokens
-- `GET /api/auth/me` — Retrieve current authenticated user profile
-
-### Resume & Analysis Routes (`/api/resume`)
-- `POST /api/resume/upload` — Upload and parse resume file (PDF/DOCX)
-- `POST /api/resume/analyze` — Run AI analysis against job description
-- `GET /api/resume/history` — Get past analysis records for user
-- `GET /api/resume/{id}` — Get single analysis report details
-
-### Career & Tools Routes (`/api/career`)
-- `POST /api/career/interview-prep` — Generate tailored interview questions & STAR answers
-- `POST /api/career/pathway` — Get career trajectory and roadmap suggestions
-- `POST /api/career/ats-check` — Perform ATS compliance audit
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, Vite, Tailwind CSS |
+| **Backend** | FastAPI (Python) |
+| **Database** | MongoDB (Atlas) |
+| **AI** | Google Gemini API |
+| **Auth** | JWT (JSON Web Tokens) |
+| **Icons** | Lucide React |
 
 ---
 
@@ -195,49 +89,198 @@ docker-compose down
 
 ```
 career-ai/
-├── .env.example
-├── .gitignore
-├── docker-compose.yml
-├── README.md
-├── backend/
+├── backend/                    # FastAPI Python backend
 │   ├── app/
-│   │   ├── api/          # Route handlers & endpoints
-│   │   ├── core/         # Config, Security, DB connection
-│   │   ├── models/       # Pydantic models & Schemas
-│   │   ├── services/     # AI service, Parser, Matcher
-│   │   └── main.py       # FastAPI application entry point
-│   ├── uploads/          # Uploaded resume files
-│   ├── Dockerfile
+│   │   ├── api/                # Route handlers
+│   │   │   ├── auth.py         # Authentication endpoints
+│   │   │   ├── career.py       # Career discovery & roadmap
+│   │   │   └── profile.py      # Skills & saved careers
+│   │   ├── data/
+│   │   │   └── career_database.py  # 155+ career dataset
+│   │   ├── services/
+│   │   │   └── ai_service.py   # Gemini AI integration
+│   │   ├── auth/               # JWT & password utilities
+│   │   ├── models/             # MongoDB models
+│   │   ├── config.py           # Environment config
+│   │   ├── database.py         # MongoDB connection
+│   │   └── main.py             # FastAPI app entry point
 │   └── requirements.txt
-└── frontend/
-    ├── public/
-    │   └── vite.svg
-    ├── src/
-    │   ├── components/   # UI & Shared components
-    │   ├── context/      # React Auth Context
-    │   ├── pages/        # Dashboard, Analyzer, Builder pages
-    │   ├── services/     # Axios API service clients
-    │   ├── App.jsx       # Main App & Router
-    │   └── main.jsx      # Vite Client entry
-    ├── Dockerfile
-    ├── package.json
-    ├── tailwind.config.js
-    └── vite.config.js
+│
+├── frontend/                   # React + Vite frontend
+│   ├── src/
+│   │   ├── pages/              # All page components
+│   │   │   ├── CareerDiscoveryPage.jsx   # AI career finder
+│   │   │   ├── CareerExplorerPage.jsx    # Browse all careers
+│   │   │   ├── CareerDetailPage.jsx      # Career details & roadmap
+│   │   │   ├── CompareCareerPage.jsx     # Career comparison
+│   │   │   ├── MySkillsPage.jsx          # Manage your skills
+│   │   │   ├── MyCareersPage.jsx         # Saved careers
+│   │   │   ├── DashboardPage.jsx         # Main dashboard
+│   │   │   └── LandingPage.jsx           # Landing page
+│   │   ├── services/           # API service layer
+│   │   ├── context/            # React context (Auth, Toast)
+│   │   ├── layouts/            # Layout components
+│   │   └── components/         # Reusable UI components
+│   └── package.json
+│
+├── .env.example                # Environment variables template
+├── docker-compose.yml          # Docker setup
+└── README.md
+```
+
+---
+
+## 🌐 Career Domains Covered
+
+| Domain | Example Careers |
+|---|---|
+| 💻 Technology & Software | Software Engineer, ML Engineer, DevOps, Cloud Architect |
+| 🎨 Design & Creative | UI/UX Designer, Graphic Designer, Motion Designer |
+| 📊 Business & Management | Product Manager, Business Analyst, Entrepreneur |
+| 📣 Marketing & Media | Digital Marketing, SEO, Content Strategist |
+| 💰 Finance & Accounting | Financial Analyst, Investment Banker, Actuary |
+| 🏥 Healthcare & Life Sciences | Doctor, Nurse, Biomedical Engineer, Clinical Researcher |
+| 🎓 Education & Research | Teacher, Professor, Instructional Designer |
+| ⚙️ Engineering | Civil, Mechanical, Aerospace, Robotics Engineer |
+| 🏛️ Government & Public Sector | Civil Services Officer, Policy Analyst |
+| ⚖️ Law & Professional Services | Lawyer, Compliance Analyst, Paralegal |
+
+---
+
+## ⚡ Getting Started
+
+### Prerequisites
+- **Python 3.10+**
+- **Node.js 18+**
+- **MongoDB** (local or Atlas cloud)
+- **Google Gemini API Key** (free at [aistudio.google.com](https://aistudio.google.com))
+
+---
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/adityavarmabuddaraju-rgb/Career-Recomandation.git
+cd Career-Recomandation
+```
+
+---
+
+### 2. Backend Setup
+
+```bash
+cd backend
+
+# Create virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Mac/Linux
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file
+copy .env.example .env
+```
+
+Edit `backend/.env` and fill in your values:
+```env
+MONGODB_URL=mongodb+srv://your-cluster-url
+DATABASE_NAME=career_ai
+GEMINI_API_KEY=your-gemini-api-key
+SECRET_KEY=your-super-secret-jwt-key
+```
+
+Start the backend:
+```bash
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Backend runs at: `http://localhost:8000`
+API Docs at: `http://localhost:8000/docs`
+
+---
+
+### 3. Frontend Setup
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# (or on Windows PowerShell: npm.cmd run dev)
+```
+
+Frontend runs at: `http://localhost:5173`
+
+---
+
+### 4. Open the App
+
+Navigate to **[http://localhost:5173](http://localhost:5173)**, create an account, and start exploring!
+
+---
+
+## 🔑 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/signup` | Register a new user |
+| `POST` | `/api/auth/login` | Login and get JWT token |
+| `GET` | `/api/career/database` | Get all 155+ careers |
+| `GET` | `/api/career/categories` | Get all career categories |
+| `GET` | `/api/career/{slug}` | Get career details |
+| `POST` | `/api/career/discover` | AI career discovery (Mode 1) |
+| `POST` | `/api/career/target` | AI career roadmap (Mode 2) |
+| `POST` | `/api/career/compare` | Compare two careers |
+| `GET` | `/api/profile/my-skills` | Get user's skills |
+| `POST` | `/api/profile/my-skills` | Add a skill |
+| `GET` | `/api/profile/saved-careers` | Get saved careers |
+| `POST` | `/api/profile/saved-careers` | Save a career |
+
+---
+
+## 🐳 Docker Setup (Optional)
+
+Run everything with a single command:
+
+```bash
+docker-compose up --build
 ```
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-1. Fork the project repository.
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+Contributions are welcome! Please:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👤 Author
+
+**Aditya Varma Buddaraju**
+
+[![GitHub](https://img.shields.io/badge/GitHub-adityavarmabuddaraju--rgb-181717?style=flat-square&logo=github)](https://github.com/adityavarmabuddaraju-rgb)
+
+---
+
+<div align="center">
+  Made with ❤️ by Aditya Varma Buddaraju
+  <br/>
+  <i>CareerAI — Discover. Learn. Grow.</i>
+</div>
