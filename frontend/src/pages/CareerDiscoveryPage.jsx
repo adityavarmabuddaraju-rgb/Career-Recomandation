@@ -11,6 +11,7 @@ import Button from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { skillsService } from '../services/skillsService';
+import { careerService } from '../services/careerService';
 import DetailedRoadmapPlanner from '../components/roadmap/DetailedRoadmapPlanner';
 
 // ─── Qualitative Fit Labels ───────────────────────────────────────────────────
@@ -147,8 +148,7 @@ export default function CareerDiscoveryPage() {
 
   // Load career list for mode 2
   useEffect(() => {
-    fetch('/api/career/database')
-      .then(r => r.ok ? r.json() : [])
+    careerService.getDatabase()
       .then(data => {
         const list = Array.isArray(data) ? data : (data.careers || []);
         setCareerList(list.map(c => c.name));
@@ -164,10 +164,7 @@ export default function CareerDiscoveryPage() {
   // Load saved skills from profile
   useEffect(() => {
     if (user) {
-      fetch('/api/profile/my-skills', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      })
-        .then(r => r.ok ? r.json() : { skills: [] })
+      skillsService.getMySkills()
         .then(data => {
           const skills = (data.skills || []).map(s => typeof s === 'string' ? s : s.name);
           if (skills.length > 0 && mode1Skills.length === 0) setMode1Skills(skills);
@@ -212,25 +209,20 @@ export default function CareerDiscoveryPage() {
     if (mode1Skills.length === 0) { setMode1Error('Add at least one skill to get started.'); return; }
     setMode1Error(''); setMode1Loading(true); setMode1Result(null);
     try {
-      const resp = await fetch('/api/career/discover', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          skills: mode1Skills,
-          education: mode1Education || undefined,
-          experience: mode1Experience || undefined,
-          interests: mode1Interests ? mode1Interests.split(',').map(s => s.trim()).filter(Boolean) : undefined,
-        }),
+      const data = await careerService.discoverCareers({
+        skills: mode1Skills,
+        education: mode1Education || undefined,
+        experience: mode1Experience || undefined,
+        interests: mode1Interests ? mode1Interests.split(',').map(s => s.trim()).filter(Boolean) : undefined,
       });
-      if (resp.ok) {
-        setMode1Result(await resp.json());
-        setMode1SelectedCareerIdx(0);
-        setActiveTab('overview');
-      } else {
-        setMode1Error('Failed to analyze skills. Please try again.');
-      }
-    } catch { setMode1Error('Network error. Please try again.'); }
-    finally { setMode1Loading(false); }
+      setMode1Result(data);
+      setMode1SelectedCareerIdx(0);
+      setActiveTab('overview');
+    } catch (err) {
+      setMode1Error('Failed to analyze skills. Please try again.');
+    } finally {
+      setMode1Loading(false);
+    }
   };
 
   // ── Mode 2 Submit ──
@@ -239,25 +231,20 @@ export default function CareerDiscoveryPage() {
     if (!finalCareer) { setMode2Error('Please select or enter your target career.'); return; }
     setMode2Error(''); setMode2Loading(true); setMode2Result(null);
     try {
-      const resp = await fetch('/api/career/target', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          career: finalCareer,
-          skills: mode2Skills,
-          experience_level: experienceLevel,
-          hours_per_day: hoursPerDay,
-          timeframe,
-        }),
+      const data = await careerService.targetCareer({
+        career: finalCareer,
+        skills: mode2Skills,
+        experience_level: experienceLevel,
+        hours_per_day: hoursPerDay,
+        timeframe,
       });
-      if (resp.ok) {
-        setMode2Result(await resp.json());
-        setActiveTab('overview');
-      } else {
-        setMode2Error('Failed to generate roadmap. Please try again.');
-      }
-    } catch { setMode2Error('Network error. Please try again.'); }
-    finally { setMode2Loading(false); }
+      setMode2Result(data);
+      setActiveTab('overview');
+    } catch (err) {
+      setMode2Error('Failed to generate roadmap. Please try again.');
+    } finally {
+      setMode2Loading(false);
+    }
   };
 
   return (

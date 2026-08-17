@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
+import { skillsService } from '../services/skillsService';
+import { careerService } from '../services/careerService';
 
 const QUICK_ACTIONS = [
   {
@@ -60,13 +62,9 @@ export default function DashboardPage() {
     const fetchData = async () => {
       try {
         const [skillsRes, careersRes, featuredRes] = await Promise.allSettled([
-          fetch('/api/profile/my-skills', {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-          }).then(r => r.ok ? r.json() : { skills: [] }),
-          fetch('/api/profile/saved-careers', {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-          }).then(r => r.ok ? r.json() : { careers: [] }),
-          fetch('/api/career/database').then(r => r.ok ? r.json() : []),
+          skillsService.getMySkills(),
+          skillsService.getSavedCareers(),
+          careerService.getDatabase(),
         ]);
 
         if (skillsRes.status === 'fulfilled') setMySkills(skillsRes.value?.skills || []);
