@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 
 from app.config import settings
 from app.database import connect_db, close_db
-from app.api import auth, resume, analysis, jobs, career, profile
+from app.api import auth, career, profile
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -53,9 +53,6 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 # Include API Routers
 app.include_router(auth.router)
-app.include_router(resume.router)
-app.include_router(analysis.router)
-app.include_router(jobs.router)
 app.include_router(career.router)
 app.include_router(profile.router)
 

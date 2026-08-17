@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, ProtectedRoute } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
-import { AnalysisProvider } from './context/AnalysisContext';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
@@ -21,8 +20,7 @@ function App() {
   return (
     <ToastProvider>
       <AuthProvider>
-        <AnalysisProvider>
-          <Routes>
+        <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
@@ -46,7 +44,6 @@ function App() {
               <Route path="/compare" element={<Navigate to="/compare-careers" replace />} />
             </Route>
           </Routes>
-        </AnalysisProvider>
       </AuthProvider>
     </ToastProvider>
   );
