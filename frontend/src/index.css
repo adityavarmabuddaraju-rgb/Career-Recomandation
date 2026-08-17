@@ -559,20 +559,24 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 }
 
 /* ===== GLOBAL DARK MODE OVERRIDES ===== */
-.dark {
+.dark,
+.dark body,
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-\[\#FAFAFA\],
+.dark .bg-\[\#fafafa\],
+.dark main {
   background-color: #0f172a !important; /* bg-slate-900 */
   color: #f8fafc !important;
 }
 
-.dark body {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
-}
-
-/* Card background overrides in dark mode */
+/* Card, Header, and element background overrides in dark mode */
 .dark .bg-white,
 .dark .card,
 .dark .card-premium,
+.dark header,
+.dark aside,
+.dark .sidebar-item.active,
 .dark [class*="bg-white/80"] {
   background-color: #1e293b !important; /* bg-slate-800 */
   border-color: #334155 !important; /* border-slate-700 */
@@ -647,6 +651,7 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 .dark .border-slate-200,
 .dark .border-slate-100,
 .dark .border-gray-200,
-.dark .border-gray-100 {
+.dark .border-gray-100,
+.dark .border-slate-100\/50 {
   border-color: #334155 !important;
 }
