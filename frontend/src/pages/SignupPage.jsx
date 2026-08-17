@@ -4,6 +4,40 @@ import { User, Mail, Lock, Sparkles, Eye, EyeOff, ArrowRight } from 'lucide-reac
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
+const InputField = ({ name, label, type = 'text', placeholder, icon: Icon, showToggle, onToggle, showState, error, value, onChange }) => (
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1.5">{label}</label>
+    <div className="relative group">
+      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-600 text-gray-400">
+        <Icon className="h-5 w-5" />
+      </div>
+      <input
+        name={name}
+        type={showToggle ? (showState ? 'text' : 'password') : type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={`block w-full pl-11 ${showToggle ? 'pr-12' : 'pr-4'} py-3 bg-gray-50/50 border rounded-xl text-sm transition-all duration-200 ease-in-out focus:bg-white focus:outline-none focus:ring-4 placeholder-gray-400 ${
+          error
+            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+            : 'border-gray-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-indigo-500/20'
+        }`}
+      />
+      {showToggle && (
+        <button
+          type="button"
+          onClick={onToggle}
+          onMouseDown={(e) => e.preventDefault()}
+          className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"
+        >
+          {showState ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+        </button>
+      )}
+    </div>
+    {error && <p className="mt-1.5 text-sm text-red-500 font-medium">{error}</p>}
+  </div>
+);
+
 export const SignupPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -44,40 +78,6 @@ export const SignupPage = () => {
     }
   };
 
-  const InputField = ({ name, label, type = 'text', placeholder, icon: Icon, showToggle, onToggle, showState, error }) => (
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1.5">{label}</label>
-      <div className="relative group">
-        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-600 text-gray-400">
-          <Icon className="h-5 w-5" />
-        </div>
-        <input
-          name={name}
-          type={showToggle ? (showState ? 'text' : 'password') : type}
-          value={formData[name]}
-          onChange={handleChange}
-          placeholder={placeholder}
-          className={`block w-full pl-11 ${showToggle ? 'pr-12' : 'pr-4'} py-3 bg-gray-50/50 border rounded-xl text-sm transition-all duration-200 ease-in-out focus:bg-white focus:outline-none focus:ring-4 placeholder-gray-400 ${
-            error
-              ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-              : 'border-gray-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-indigo-500/20'
-          }`}
-        />
-        {showToggle && (
-          <button
-            type="button"
-            onClick={onToggle}
-            onMouseDown={(e) => e.preventDefault()}
-            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"
-          >
-            {showState ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-          </button>
-        )}
-      </div>
-      {error && <p className="mt-1.5 text-sm text-red-500 font-medium">{error}</p>}
-    </div>
-  );
-
   return (
     <div className="min-h-screen font-sans flex items-center justify-center bg-[#FAFAFA] relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
       {/* Dynamic Background Elements */}
@@ -104,22 +104,24 @@ export const SignupPage = () => {
             <InputField
               name="name" label="Full Name" type="text"
               placeholder="Jane Doe" icon={User} error={errors.name}
+              value={formData.name} onChange={handleChange}
             />
             <InputField
               name="email" label="Email address" type="email"
               placeholder="name@example.com" icon={Mail} error={errors.email}
+              value={formData.email} onChange={handleChange}
             />
             <InputField
               name="password" label="Password" type="password"
               placeholder="At least 6 characters" icon={Lock}
               showToggle onToggle={() => setShowPassword(!showPassword)} showState={showPassword}
-              error={errors.password}
+              error={errors.password} value={formData.password} onChange={handleChange}
             />
             <InputField
               name="confirmPassword" label="Confirm Password" type="password"
               placeholder="Repeat your password" icon={Lock}
               showToggle onToggle={() => setShowConfirm(!showConfirm)} showState={showConfirm}
-              error={errors.confirmPassword}
+              error={errors.confirmPassword} value={formData.confirmPassword} onChange={handleChange}
             />
 
             {/* Submit Button */}
