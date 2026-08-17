@@ -1,9 +1,25 @@
 import axios from 'axios';
 
-// In production (Vercel), set VITE_API_URL to your deployed backend URL
-// e.g. https://your-backend.onrender.com/api
-// In local dev, it uses the Vite proxy so /api works automatically
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Smart API Base URL resolver:
+// 1. Uses VITE_API_URL if configured in environment
+// 2. Uses deployed Render URL if running in production/Vercel (non-localhost)
+// 3. Defaults to relative /api for local development proxy
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  
+  const hostname = window.location.hostname;
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('192.168.');
+  
+  if (!isLocal) {
+    return 'https://career-recomandation.onrender.com/api';
+  }
+  
+  return '/api';
+};
+
+const BASE_URL = getBaseUrl();
 
 const api = axios.create({
   baseURL: BASE_URL,
