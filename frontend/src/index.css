@@ -557,3 +557,96 @@ a, button, [role="button"], select, input[type="checkbox"], input[type="radio"],
 a:disabled, button:disabled, [disabled], [disabled] * {
   cursor: not-allowed !important;
 }
+
+/* ===== GLOBAL DARK MODE OVERRIDES ===== */
+.dark {
+  background-color: #0f172a !important; /* bg-slate-900 */
+  color: #f8fafc !important;
+}
+
+.dark body {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* Card background overrides in dark mode */
+.dark .bg-white,
+.dark .card,
+.dark .card-premium,
+.dark [class*="bg-white/80"] {
+  background-color: #1e293b !important; /* bg-slate-800 */
+  border-color: #334155 !important; /* border-slate-700 */
+  color: #f8fafc !important;
+}
+
+/* Text overrides in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700 {
+  color: #f8fafc !important;
+}
+
+.dark p,
+.dark span,
+.dark .text-slate-500,
+.dark .text-gray-500 {
+  color: #cbd5e1 !important; /* text-slate-300 */
+}
+
+/* Link overrides in dark mode */
+.dark a:not([class*="text-indigo"]):not([class*="text-violet"]):not([class*="text-blue"]):not([class*="text-emerald"]) {
+  color: #cbd5e1 !important;
+}
+
+/* Input and Select overrides in dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+.dark input::placeholder {
+  color: #64748b !important; /* text-slate-500 */
+}
+
+/* Sidebar and Navigation overrides in dark mode */
+.dark nav,
+.dark aside,
+.dark .sidebar-item {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark .sidebar-item:hover,
+.dark .sidebar-item.active {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+/* Specific Badge and Tag background resets in dark mode */
+.dark .bg-slate-100 {
+  background-color: #334155 !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+/* Border overrides */
+.dark .border-slate-200,
+.dark .border-slate-100,
+.dark .border-gray-200,
+.dark .border-gray-100 {
+  border-color: #334155 !important;
+}

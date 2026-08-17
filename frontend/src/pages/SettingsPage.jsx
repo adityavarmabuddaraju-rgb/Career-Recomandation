@@ -16,20 +16,12 @@ export default function SettingsPage() {
     
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
-    } else if (newTheme === 'light') {
-      document.documentElement.classList.remove('dark');
     } else {
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (systemDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.remove('dark');
     }
   };
 
   useEffect(() => {
-    // Keep theme consistent on mount
     const savedTheme = localStorage.getItem('theme') || 'light';
     handleThemeChange(savedTheme);
   }, []);
@@ -106,7 +98,7 @@ export default function SettingsPage() {
             <div className="p-2 bg-amber-50 text-amber-600 rounded-lg"><Sun size={20} /></div>
             <h2 className="text-xl font-semibold text-slate-800">Appearance</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button 
               onClick={() => handleThemeChange('light')}
               className={`flex flex-col items-center justify-center p-4 border-2 rounded-xl transition-all ${
@@ -124,15 +116,6 @@ export default function SettingsPage() {
             >
               <Moon className={theme === 'dark' ? 'text-indigo-600 mb-2' : 'text-slate-400 mb-2'} size={24} />
               <span className="font-semibold text-sm">Dark Mode</span>
-            </button>
-            <button 
-              onClick={() => handleThemeChange('system')}
-              className={`flex flex-col items-center justify-center p-4 border-2 rounded-xl transition-all ${
-                theme === 'system' ? 'border-indigo-500 bg-indigo-50/50 text-indigo-900' : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
-            >
-              <Monitor className={theme === 'system' ? 'text-indigo-600 mb-2' : 'text-slate-400 mb-2'} size={24} />
-              <span className="font-semibold text-sm">System Theme</span>
             </button>
           </div>
         </Card>
