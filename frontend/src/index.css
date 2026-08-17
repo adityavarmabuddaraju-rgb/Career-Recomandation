@@ -558,7 +558,25 @@ a:disabled, button:disabled, [disabled], [disabled] * {
   cursor: not-allowed !important;
 }
 
-/* ===== GLOBAL DARK MODE OVERRIDES ===== */
+/* ===== STRICT LIGHT/DARK THEME OVERRIDES ===== */
+
+/* 1. Light Theme High-Contrast Defaults */
+body {
+  color: #1e293b; /* High-contrast slate-800 default */
+}
+
+h1, h2, h3, h4, h5, h6,
+.text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600,
+.text-gray-900, .text-gray-800, .text-gray-700 {
+  color: #0f172a !important; /* Pure black / dark slate */
+}
+
+p, span, label, li,
+.text-slate-500, .text-gray-500 {
+  color: #334155 !important; /* Highly readable dark body text */
+}
+
+/* 2. Deployed Dark Theme Strict White Overrides */
 .dark,
 .dark body,
 .dark .bg-slate-50,
@@ -567,49 +585,61 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 .dark .bg-\[\#fafafa\],
 .dark main {
   background-color: #0f172a !important; /* bg-slate-900 */
-  color: #f8fafc !important;
+  color: #ffffff !important;
 }
 
-/* Card, Header, and element background overrides in dark mode */
+/* Card background & pastel container overrides in dark mode */
 .dark .bg-white,
 .dark .card,
 .dark .card-premium,
 .dark header,
 .dark aside,
 .dark .sidebar-item.active,
+.dark .bg-indigo-50,
+.dark .bg-violet-50,
+.dark .bg-blue-50,
+.dark .bg-purple-50,
+.dark .bg-slate-50,
 .dark [class*="bg-white/80"] {
-  background-color: #1e293b !important; /* bg-slate-800 */
+  background-color: #1e293b !important; /* bg-slate-800 card */
   border-color: #334155 !important; /* border-slate-700 */
-  color: #f8fafc !important;
+  color: #ffffff !important;
 }
 
-/* Text overrides in dark mode */
+/* Strict white text colors in dark mode */
 .dark h1,
 .dark h2,
 .dark h3,
 .dark h4,
 .dark h5,
 .dark h6,
+.dark p,
+.dark span,
+.dark label,
+.dark li,
+.dark div,
+.dark a,
+.dark button,
 .dark .text-slate-900,
 .dark .text-slate-800,
 .dark .text-slate-700,
 .dark .text-slate-600,
+.dark .text-slate-500,
 .dark .text-gray-900,
 .dark .text-gray-800,
-.dark .text-gray-700 {
-  color: #f8fafc !important;
-}
-
-.dark p,
-.dark span,
-.dark .text-slate-500,
-.dark .text-gray-500 {
-  color: #cbd5e1 !important; /* text-slate-300 */
-}
-
-/* Link overrides in dark mode */
-.dark a:not([class*="text-indigo"]):not([class*="text-violet"]):not([class*="text-blue"]):not([class*="text-emerald"]) {
-  color: #cbd5e1 !important;
+.dark .text-gray-700,
+.dark .text-gray-500,
+.dark .text-indigo-900,
+.dark .text-violet-900,
+.dark .text-indigo-800,
+.dark .text-violet-800,
+.dark .text-indigo-700,
+.dark .text-violet-700,
+.dark .text-indigo-600,
+.dark .text-violet-600,
+.dark .text-indigo-500,
+.dark .text-violet-500 {
+  color: #ffffff !important;
 }
 
 /* Input and Select overrides in dark mode */
@@ -618,11 +648,11 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 .dark textarea {
   background-color: #1e293b !important;
   border-color: #334155 !important;
-  color: #f8fafc !important;
+  color: #ffffff !important;
 }
 
 .dark input::placeholder {
-  color: #64748b !important; /* text-slate-500 */
+  color: #94a3b8 !important; /* slate-400 */
 }
 
 /* Sidebar and Navigation overrides in dark mode */
@@ -631,7 +661,7 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 .dark .sidebar-item {
   background-color: #0f172a !important;
   border-color: #334155 !important;
-  color: #cbd5e1 !important;
+  color: #ffffff !important;
 }
 
 .dark .sidebar-item:hover,
@@ -643,7 +673,7 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 /* Specific Badge and Tag background resets in dark mode */
 .dark .bg-slate-100 {
   background-color: #334155 !important;
-  color: #f8fafc !important;
+  color: #ffffff !important;
   border-color: #475569 !important;
 }
 
@@ -652,6 +682,8 @@ a:disabled, button:disabled, [disabled], [disabled] * {
 .dark .border-slate-100,
 .dark .border-gray-200,
 .dark .border-gray-100,
-.dark .border-slate-100\/50 {
+.dark .border-slate-100\/50,
+.dark .border-indigo-100,
+.dark .border-violet-100 {
   border-color: #334155 !important;
 }
